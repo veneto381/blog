@@ -28,6 +28,8 @@ type Article struct {
 	CreatedAt     time.Time
 	OnTop         bool `gorm:"default: false"`
 	Author        int32
+	Published     bool `gorm:"default: false; not null"`
+	Deleted       bool `gorm:"default: false; not null"`
 }
 
 type ArticleContent struct {
