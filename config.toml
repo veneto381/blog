@@ -1,6 +1,7 @@
 listenAddr = "127.0.0.1:8080"
 [database]
     [database.mysql]
+    enable = true
     username = "blog"
     password = "admin"
     ip = "127.0.0.1"

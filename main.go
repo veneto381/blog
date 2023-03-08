@@ -1,6 +1,9 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/spf13/viper"
+)
 
 func main() {
 	g := gin.Default()
@@ -9,4 +12,5 @@ func main() {
 	{
 		user.GET("/info/:name", GetUserInfo)
 	}
+	g.Run(viper.GetString("listenAddr"))
 }

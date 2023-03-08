@@ -24,7 +24,8 @@ func init() {
 
 func init() {
 	if viper.GetBool("database.mysql.enable") {
-		dsn := strings.Join([]string{viper.GetString("mysql.username"), ":", viper.GetString("mysql.password"), "@tcp(", viper.GetString("mysql.ip"), ":", viper.GetString("mysql.port"), ")/", viper.GetString("mysql.dbname"), "?charset=utf8mb4&parseTime=True&loc=Local"}, "")
+		dsn := strings.Join([]string{viper.GetString("database.mysql.username"), ":", viper.GetString("database.mysql.password"), "@tcp(", viper.GetString("database.mysql.ip"), ":", viper.GetString("database.mysql.port"), ")/", viper.GetString("database.mysql.dbname"), "?charset=utf8mb4&parseTime=True&loc=Local"}, "")
+		log.Println(dsn)
 		var err error
 		db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 		if err != nil {
