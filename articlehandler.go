@@ -75,16 +75,16 @@ func GetArticleTitles(c *gin.Context) {
 		})
 		return
 	}
-	DB.Where("id = ?", type1.Id)
+	DB = DB.Where("type = ?", type1.Id)
 	var types2 []Type
 	db.Select("id").Where("father = ?", type1.Id).Find(&types2)
 	for _, v := range types2 {
-		DB.Where("id = ?", v.Id)
+		DB = DB.Where("type = ?", v.Id)
 	}
 
 	articles := []Article{}
 
-	DB.Order("created_at desc").Offset((page - 1) * titles).Limit(titles).Find(&articles)
+	DB = DB.Debug().Order("created_at desc").Offset((page - 1) * titles).Limit(titles).Find(&articles)
 	c.JSON(200, gin.H{
 		"type": "articles",
 		"data": articles,
@@ -140,11 +140,11 @@ func PostArticle(c *gin.Context) {
 
 	var article = Article{
 		Title:  title,
-		Type:   articleType,
+		Type:   int32(articleType),
 		Author: claim.UserId,
 	}
 	if lable != 0 {
-		article.Lable = lable
+		article.Lable = int32(lable)
 	}
 	db.Create(&article)
 	db.Create(&ArticleContent{
