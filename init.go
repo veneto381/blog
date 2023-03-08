@@ -10,7 +10,8 @@ import (
 )
 
 var (
-	db *gorm.DB
+	db     *gorm.DB
+	domain string
 )
 
 func init() {
@@ -32,4 +33,8 @@ func init() {
 			log.Fatal("数据库连接失败\n" + err.Error())
 		}
 	}
+}
+
+func init() {
+	domain = viper.GetString("domain")
 }
