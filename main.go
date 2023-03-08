@@ -11,6 +11,7 @@ func main() {
 	user := g.Group("/user")
 	{
 		user.GET("/info/:name", GetUserInfo)
+		user.GET("/detail/:name", CheckUser, GetUserDetail)
 	}
 	g.POST("/login", Login)
 	g.Run(viper.GetString("listenAddr"))
