@@ -17,7 +17,9 @@ func main() {
 	{
 		article.GET("/view/:id", GetArticleById)
 		article.GET("/titles", GetArticleTitles)
+		article.GET("/review", CheckUser, ReviewArticlesList)
 		article.POST("", CheckUser, PostArticle)
+		article.POST("/review", CheckUser, ReviewArticle)
 	}
 	g.POST("/login", Login)
 	g.POST("/register", Register)
