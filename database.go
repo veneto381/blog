@@ -19,8 +19,8 @@ type Article struct {
 	Id            int32  `gorm:"not null; auto_increment"`
 	Title         string `gorm:"not null; type: varchar(1024); not null"`
 	Summary       string `gorm:"type: varchar(1024)"`
-	Lable         int    `gorm:"default: null"`
-	Type          int
+	Lable         int32  `gorm:"default: null"`
+	Type          int32
 	Coin          float64 `gorm:"default: 0"`
 	CommentNumber int
 	LikeNumber    int
