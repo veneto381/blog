@@ -12,5 +12,6 @@ func main() {
 	{
 		user.GET("/info/:name", GetUserInfo)
 	}
+	g.POST("/login", Login)
 	g.Run(viper.GetString("listenAddr"))
 }
