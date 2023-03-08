@@ -82,6 +82,8 @@ func GetArticleTitles(c *gin.Context) {
 		DB = DB.Where("type = ?", v.Id)
 	}
 
+	DB = DB.Where("published <> false & deleted <> false")
+
 	articles := []Article{}
 
 	DB = DB.Debug().Order("created_at desc").Offset((page - 1) * titles).Limit(titles).Find(&articles)
