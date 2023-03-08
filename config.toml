@@ -1,4 +1,5 @@
 listenAddr = "127.0.0.1:8080"
+domain = "127.0.0.1"
 [database]
     [database.mysql]
     enable = true
