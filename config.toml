@@ -1,0 +1,8 @@
+listenAddr = "127.0.0.1:8080"
+[database]
+    [database.mysql]
+    username = "blog"
+    password = "admin"
+    ip = "127.0.0.1"
+    port = "3306"
+    dbname = "Blog"
